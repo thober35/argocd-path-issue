@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+spec:
+  generators:
+  - list:
+      elements:
+      - namespace: env-dev
+        path: .;../env-prod
+      - namespace: env-prod
+        path: .
+  template:
+    metadata:
+      name: '{{namespace}}-guestbook'
+      annotations:
+        argocd.argoproj.io/manifest-generate-paths: {{path}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/thober35/argocd-path-issue.git
+        targetRevision: HEAD
+        path: {{namespace}}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: {{namespace}}
