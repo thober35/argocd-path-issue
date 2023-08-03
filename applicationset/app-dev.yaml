@@ -7,6 +7,10 @@ metadata:
     argocd.argoproj.io/manifest-generate-paths: .;../env-prod
 spec:
   project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated: { }
   source:
     repoURL: https://github.com/thober35/argocd-path-issue.git
     targetRevision: HEAD
