@@ -7,20 +7,24 @@ spec:
   - list:
       elements:
       - namespace: env-dev
-        path: .;../env-prod
+        path: ".;../env-prod"
       - namespace: env-prod
-        path: .
+        path: "."
   template:
     metadata:
       name: '{{namespace}}-guestbook'
       annotations:
-        argocd.argoproj.io/manifest-generate-paths: {{path}}
+        argocd.argoproj.io/manifest-generate-paths: '{{path}}'
     spec:
       project: default
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
+        automated: { }
       source:
         repoURL: https://github.com/thober35/argocd-path-issue.git
         targetRevision: HEAD
-        path: {{namespace}}
+        path: '{{namespace}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: {{namespace}}
+        namespace: '{{namespace}}'
