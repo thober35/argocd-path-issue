@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-dev
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/manifest-generate-paths: .;../env-prod
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/thober35/argocd-path-issue.git
+    targetRevision: HEAD
+    path: env-dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: env-dev
