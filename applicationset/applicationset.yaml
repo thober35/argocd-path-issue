@@ -22,10 +22,9 @@ spec:
           - CreateNamespace=true
         automated: { }
       source:
-        chart: appchart
         repoURL: https://github.com/thober35/argocd-path-issue.git
         path: appchart
-        targetRevision: HEAD
+        revision: master
         helm:
           releaseName: 'set-{{namespace}}'
           valueFiles:
