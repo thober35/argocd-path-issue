@@ -12,9 +12,14 @@ spec:
       - CreateNamespace=true
     automated: { }
   source:
+    chart: appchart
     repoURL: https://github.com/thober35/argocd-path-issue.git
+    path: appchart
     targetRevision: HEAD
-    path: env-prod
+    helm:
+      releaseName: app-env-prod
+      valueFiles:
+        - ../env-prod/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: env-prod

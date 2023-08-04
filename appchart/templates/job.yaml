@@ -1,14 +1,15 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: ajob
-  labels:
-    info: "01"
+  name: job-{{ .Release.Name }}
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
 spec:
   template:
     spec:
       containers:
-        - name: acontainer
+        - name: container
           image: busybox:latest
           imagePullPolicy: IfNotPresent
           command:
