@@ -4,7 +4,7 @@ metadata:
   name: app-dev
   namespace: argocd
   annotations:
-    argocd.argoproj.io/manifest-generate-paths: .;../env-prod
+    argocd.argoproj.io/manifest-generate-paths: .;../env-all
 spec:
   project: default
   syncPolicy:
@@ -12,14 +12,14 @@ spec:
       - CreateNamespace=true
     automated: { }
   source:
-    chart: appchart
-    repoURL: https://github.com/thober35/argocd-path-issue.git
+    repoURL: https://github.com/thober35/argocd-path-issue
     path: appchart
     targetRevision: HEAD
     helm:
       releaseName: app-env-dev
       valueFiles:
         - ../env-dev/values.yaml
+        - ../env-all/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: env-dev

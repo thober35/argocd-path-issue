@@ -2,13 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: guestbook
+  namespace: argocd
 spec:
   generators:
   - list:
       elements:
-      - namespace: env-dev
-        path: ".;../env-prod"
-      - namespace: env-prod
+      - namespace: env-dev-set
+        value: env-dev
+        path: ".;../env-all"
+      - namespace: env-prod-set
+        value: env-prod
         path: "."
   template:
     metadata:
@@ -22,13 +25,13 @@ spec:
           - CreateNamespace=true
         automated: { }
       source:
-        repoURL: https://github.com/thober35/argocd-path-issue.git
+        repoURL: https://github.com/thober35/argocd-path-issue
         path: appchart
-        targetRevision: master
+        targetRevision: HEAD
         helm:
-          releaseName: 'set-{{namespace}}'
           valueFiles:
-            - ../{{namespace}}/values.yaml
+            - '../{{value}}/values.yaml'
+            - ../env-all/values.yaml
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{namespace}}'
