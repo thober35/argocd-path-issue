@@ -33,7 +33,7 @@ spec:
     metadata:
       name: '{{namespace}}-guestbook'
       labels:
-        rolloutWave: "{{`{{rolloutWave}}`}}"
+        rolloutWave: '{{rolloutWave}}'
       annotations:
         argocd.argoproj.io/manifest-generate-paths: '{{path}}'
     spec:
