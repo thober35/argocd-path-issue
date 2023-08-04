@@ -24,7 +24,7 @@ spec:
       source:
         repoURL: https://github.com/thober35/argocd-path-issue.git
         path: appchart
-        revision: master
+        targetRevision: master
         helm:
           releaseName: 'set-{{namespace}}'
           valueFiles:
