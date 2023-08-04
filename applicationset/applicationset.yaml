@@ -10,12 +10,30 @@ spec:
       - namespace: env-dev-set
         value: env-dev
         path: ".;../env-all"
+        rolloutWave: "1"
       - namespace: env-prod-set
         value: env-prod
         path: "."
+        rolloutWave: "2"
+  strategy:
+    type: RollingSync
+    rollingSync:
+      steps:
+        - matchExpressions:
+            - key: rolloutWave
+              operator: In
+              values:
+                - "1"
+        - matchExpressions:
+            - key: rolloutWave
+              operator: In
+              values:
+                - "2"
   template:
     metadata:
       name: '{{namespace}}-guestbook'
+      labels:
+        rolloutWave: "{{`{{rolloutWave}}`}}"
       annotations:
         argocd.argoproj.io/manifest-generate-paths: '{{path}}'
     spec:
