@@ -12,7 +12,7 @@ spec:
       - CreateNamespace=true
     automated: { }
   source:
-    repoURL: https://github.com/thober35/argocd-path-issue
+    repoURL: https://bitbucket.org/thomas-bernhard/argocd-path-issue
     path: appchart
     targetRevision: HEAD
     helm:
