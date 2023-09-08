@@ -1,1 +1,10 @@
 releaseVersion: "all-0.0.15"
+
+#  argocd-server-68f78cfcdb-xvg4b time="2023-09-08T08:15:23Z" level=info msg="Received push event repo: https://bitbucket.org/thomas-bernhard/argocd-path-issue, revision: master, touchedHead: true"
+#  argocd-server-68f78cfcdb-xvg4b time="2023-09-08T08:15:23Z" level=info msg="Requested app 'app-dev' refresh"
+#  argocd-server-68f78cfcdb-xvg4b time="2023-09-08T08:15:23Z" level=info msg="Requested app 'app-prod' refresh"
+#  argocd-server-68f78cfcdb-xvg4b time="2023-09-08T08:15:23Z" level=info msg="Requested app 'env-dev-set-guestbook' refresh"
+#  argocd-server-68f78cfcdb-xvg4b time="2023-09-08T08:15:23Z" level=info msg="Requested app 'env-prod-set-guestbook' refresh"
+
+
+
