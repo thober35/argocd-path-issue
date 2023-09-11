@@ -1,4 +1,4 @@
-releaseVersion: "all-0.0.18"
+releaseVersion: "all-0.0.19"
 
 #  argocd-server-68f78cfcdb-xvg4b time="2023-09-08T08:15:23Z" level=info msg="Received push event repo: https://bitbucket.org/thomas-bernhard/argocd-path-issue, revision: master, touchedHead: true"
 #  argocd-server-68f78cfcdb-xvg4b time="2023-09-08T08:15:23Z" level=info msg="Requested app 'app-dev' refresh"
